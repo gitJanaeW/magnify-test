@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * { margin:0; padding:0; } 
+#page { 
+    width:100%; 
+    height:100%; 
+    background:#CCC; 
+    overflow:hidden; 
+        } 
+#page:after { 
+    content:''; 
+    z-index:8; 
+    width:100%; 
+    height:100%; 
+    background:rgba(0,0,0,0.6); 
+    position:absolute; 
+        }
+#page, #magnify { 
+    background:url(https://cdn.pixabay.com/photo/2015/04/19/08/32/marguerite-729510_1280.jpg) center center no-repeat; 
+    position:absolute; 
+    top:0px; left:0px; 
+    background-attachment:fixed; 
+    background-size:900px; 
+    transition: background-size 300ms, width 300ms, height 300ms; } 
+
+
+#magnify { 
+    z-index:9;
+    width:300px; 
+    height:300px; 
+    border:none; 
+    border-radius:200px; 
+    box-shadow:inset 0px 0px 30px 20px rgba(0,0,0,0.1), 0px 0px 10px 0px rgba(0,0,0,.6); 
+    margin:-150px; 
+    border:10px solid #FFF; 
+    background-size:1100px; 
+    top:50%; left:50%; over-flow:hidden; } 
+
+#magnify:active { background-size:1500px; } 
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div id="page">
+        <span id="magnify"></span>
+      </div>
+      <script>
+        document.getElementById("page").ontouchmove = function(e) {
+    document.getElementById("magnify").style.top = e.pageY*1 + "px";
+    document.getElementById("magnify").style.left = e.pageX*1 + "px";
+}
+      </script>
+</body>
+</html>
